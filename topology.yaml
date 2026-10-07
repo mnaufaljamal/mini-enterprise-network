@@ -1,0 +1,24 @@
+name: mini-enterprise
+
+topology:
+  nodes:
+    router:
+      kind: linux
+      image: frrouting/frr:latest
+
+    staff:
+      kind: linux
+      image: alpine:latest
+
+    server:
+      kind: linux
+      image: alpine:latest
+
+    guest:
+      kind: linux
+      image: alpine:latest
+
+  links:
+    - endpoints: ["router:eth1", "staff:eth1"]
+    - endpoints: ["router:eth2", "server:eth1"]
+    - endpoints: ["router:eth3", "guest:eth1"]
