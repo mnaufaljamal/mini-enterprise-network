@@ -11,6 +11,26 @@ Jaringan terdiri dari tiga segment:
 
 Router digunakan untuk melakukan inter-subnet routing dan menerapkan firewall policy.
 
+## Testing Evidence
+
+### 1. Staff → Server — ALLOWED
+
+Staff (`10.10.10.10`) berhasil berkomunikasi dengan Server (`10.10.20.10`).
+
+![Staff to Server](docs/evidence/staff-server.png)
+
+### 2. Guest → Server — BLOCKED
+
+Guest (`10.10.30.10`) tidak dapat berkomunikasi dengan Server (`10.10.20.10`) karena diblokir oleh firewall.
+
+![Guest to Server](docs/evidence/guest-server.png)
+
+### 3. Firewall Rule — DROP
+
+Firewall menunjukkan rule `DROP` untuk trafik dari Guest LAN (`10.10.30.0/24`) menuju Server LAN (`10.10.20.0/24`). Counter paket menunjukkan bahwa trafik Guest benar-benar terkena rule tersebut.
+
+![Firewall Evidence](docs/evidence/firewall.png)
+
 ## Network Topology
 
 ```text
